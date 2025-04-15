@@ -123,3 +123,5 @@ def login(request):
     
     ##
     # hello commit
+
+    ## new commit from sina test
