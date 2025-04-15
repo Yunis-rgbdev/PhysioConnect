@@ -25,5 +25,5 @@ class PatientCollection:
         return patients
     
     def get_patient_by_id(self, id):
-        # Filter by name
+        # Filter by id
         return self.collection.find_one({'id_number': id}, {'_id': 0})

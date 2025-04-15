@@ -45,7 +45,7 @@ def register_user(request):
             return JsonResponse({"success": False, "message": "User already exists"}, status=400)
 
         # Hash password
-        hashed_password = hash_password(password)
+        # hashed_password = hash_password(password)
 
         # Save user
         user_data = {
@@ -120,3 +120,6 @@ def login(request):
             "success": False, 
             "message": str(e)
         }, status=500)
+    
+    ##
+    # hello commit

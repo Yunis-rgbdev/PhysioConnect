@@ -66,9 +66,11 @@ class MyApp extends StatelessWidget {
         ),
         outlinedButtonTheme: OutlinedButtonThemeData(
           style: OutlinedButton.styleFrom(
+            elevation: 6,
             foregroundColor: Colors.white,
             side: const BorderSide(color: Colors.black),
             padding: const EdgeInsets.symmetric(vertical: 16),
+            
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(8),
             ),

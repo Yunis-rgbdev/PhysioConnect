@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:persian_fonts/persian_fonts.dart';
 
 
 class WavePatternPainter extends CustomPainter {
@@ -119,9 +120,12 @@ class WelcomeScreen extends StatelessWidget {
                     ),
                   ),
                   const Spacer(),
-                  Text(
-                    'Welcome',
-                    style: Theme.of(context).textTheme.displayLarge,
+                  Align(
+                    alignment: Alignment.centerRight,
+                    child: Text(
+                      'خوش آمدید',
+                      style: PersianFonts.Yekan.copyWith(color: Colors.black, fontSize: 28, fontWeight: FontWeight.bold),
+                    ),
                   ),
                   const SizedBox(height: 8),
                   
