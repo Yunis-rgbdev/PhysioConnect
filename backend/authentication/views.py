@@ -121,7 +121,3 @@ def login(request):
             "message": str(e)
         }, status=500)
     
-    ##
-    # hello commit
-
-    ## new commit from sina test
