@@ -1,17 +1,20 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:frontend/home_page/home_view.dart';
+import 'package:frontend/user_auth_controller.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 
+import '../home_page/home_controller.dart';
+
 class LoginController extends GetxController {
-  var userId = ''.obs;
-  var userName = ''.obs;
+  // final HomeController _controllerH = Get.put(HomeController());
+  final AuthController _controllerA = Get.find<AuthController>();
+  // RxString userName = ''.obs;
   var isLoggedIn = false.obs;
   final TextEditingController idController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
   final obscurePassword = true.obs;
-
   void togglePasswordVisibility() {
     obscurePassword.value = !obscurePassword.value;
   }
@@ -50,20 +53,19 @@ class LoginController extends GetxController {
         final data = jsonDecode(response.body);
         print("Login Success: ${data['user_data']}");
 
-        print(data);
-
         // here we fill the userid with LoggedIn user id if it was successful
         // and we set the isLoggedIn to true
         
         print("Filling the userId variables");
-        String id = data['user_data']['id_number'].toString();
-        String patientname = data['user_data']['name'].toString();
-        userName.value = patientname;
-        print(userName);
-        setUserLoggedIn(id);
+        String userID = data['user_data']['id_number'];
+        String username = data['user_data']['name'];
 
-        if (userId.isNotEmpty) {
-          print('userId filled succesfully with ID:${userId}.');
+        print('debugging $userID and $username');
+        // setUserLoggedIn(userId, userName);
+
+        if (userID.isNotEmpty) {
+          print('saving parient: ${userID}, to main controller');
+          _controllerA.setUserId(userID, username);
         }
           //navigating to user home page if login was successful
           print('Navigating to user home page.');
@@ -84,18 +86,20 @@ class LoginController extends GetxController {
     }
   }
 
-    // if user login was successful this function will be called
-  // and the userId witll be used to intilialize data from database to homepage
+
+  // if user login was successful this function will be called
+  // and the userId will be used to intilialize data from database to homepage
   // and the isLoggedIn will be set to true
-  void setUserLoggedIn(String id) async {
-    userId.value = id;
-    
-    isLoggedIn.value = true;
-  }
+  // void setUserLoggedIn(String user, String name) async {
+  //   userID = user.toString();
+  //   name = userName.toString();
+  //   print(user);
+  //   isLoggedIn.value = true;
+  // }
 
   // Logout
   void logout() async {
-    userId.value = '';
+    _controllerA.userID.value = '';
     isLoggedIn.value = false;
   }
 }

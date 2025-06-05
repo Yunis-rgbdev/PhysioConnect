@@ -57,13 +57,29 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'healthconnect.urls'
 
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+        # 'rest_framework.authentication.SessionAuthentication',  # comment out or remove
+    ),
+    # Optional: allow all for testing
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.AllowAny',
+    ),
+}
+
 CORS_ALLOW_ALL_ORIGINS = True  # Allow all origins (For testing)
 # CORS_ALLOW_METHODS = ["GET", "POST", "OPTIONS"]
 # CORS_ALLOW_HEADERS = ["*"]
 
 
-ALLOWED_HOSTS = ["127.0.0.1", "localhost"]
-CSRF_TRUSTED_ORIGINS = ["http://localhost:51000", "http://127.0.0.1:8000"]
+# ALLOWED_HOSTS = ["127.0.0.1", "localhost"]
+CSRF_TRUSTED_ORIGINS = [
+    "http://localhost:53147",  # adjust port if needed
+    'http://localhost:36011',
+    'http://127.0.0.1:36011',
+    # add more if using other domains or ports
+]
 
 
 TEMPLATES = [

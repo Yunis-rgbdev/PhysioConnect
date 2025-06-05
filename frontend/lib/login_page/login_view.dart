@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/login_page/login_controller.dart';
+import 'package:frontend/user_auth_controller.dart';
 import 'package:frontend/welcome_page/welcome_view.dart';
 import 'package:get/get.dart';
 
@@ -70,6 +71,7 @@ class WavePatternPainter extends CustomPainter {
 
 class LoginView extends StatelessWidget {
   final LoginController controller = Get.put(LoginController());
+final _controllerA = Get.find<AuthController>();
   
   LoginView({super.key});
 
@@ -115,7 +117,7 @@ class LoginView extends StatelessWidget {
                       hintText: 'ID',
                       hintStyle: const TextStyle(color: Colors.black45),
                         prefixIcon: const Icon(Icons.perm_identity, color: Colors.blue),
-                      suffixIcon: Obx(() => controller.userId.value.isNotEmpty
+                      suffixIcon: Obx(() => _controllerA.userID.value.isNotEmpty
                         ? const Icon(Icons.check_circle, color: Colors.green)
                         : const SizedBox()),
                     ),

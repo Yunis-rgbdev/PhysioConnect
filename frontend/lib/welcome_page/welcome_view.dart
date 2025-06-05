@@ -134,7 +134,7 @@ class WelcomeScreen extends StatelessWidget {
                     width: double.infinity,
                     child: ElevatedButton(
                       onPressed: () => Navigator.pushNamed(context, '/login'),
-                      child: const Text('Log in'),
+                      child: Text('ورود', style: PersianFonts.Yekan.copyWith(color: Colors.white),),
                     ),
                   ),
                   const SizedBox(height: 16),
@@ -142,7 +142,7 @@ class WelcomeScreen extends StatelessWidget {
                     width: double.infinity,
                     child: OutlinedButton(
                       onPressed: () => Navigator.pushNamed(context, '/signup'),
-                      child: const Text('Sign up', style: TextStyle(color: Colors.black),),
+                      child: Text('ثبت نام', style: PersianFonts.Yekan.copyWith(color: Colors.black),),
                     ),
                   ),
                   const SizedBox(height: 48),
@@ -155,5 +155,3 @@ class WelcomeScreen extends StatelessWidget {
     );
   }
 }
-
-// commit 

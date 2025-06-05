@@ -121,49 +121,6 @@ def login(request):
             "message": str(e)
         }, status=500)
     
-def login(request):
-    try:
-
-        data = json.loads(request.body.decode("utf-8"))
-        id_number = data.get("id_number")
-        password = data.get("password")
 
 
-        if not id_number or not password:
-            return JsonResponse({
-                "success": False,
-                "message": "ID and Password are required"
-            }, status=400)
-        
-
-        Doctor_user =  patients_collection.find_one({
-            "id_number": id_number, 
-            "password": password
-        })
-
-        if Doctor_user:
-            return JsonResponse({
-                "success": True,
-                "message": "User logged in successfully",
-                "user_data": { 
-                    "id_number": Doctor_user["id_number"],
-                    "name": Doctor_user.get("name"),
-
-                     }
-            }, status=200)
-        else:
-            return JsonResponse({
-                "success": False,
-                "message": "Invalid credentials"
-            }, status=401)
-
-    except json.JSONDecodeError:
-        return JsonResponse({
-            "success": False,
-            "message": "Invalid JSON data"
-        }, status=400)
-    except Exception as e:
-        return JsonResponse({
-            "success": False,
-            "message": str(e)
-        }, status=500)
+    

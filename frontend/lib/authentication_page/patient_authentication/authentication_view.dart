@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:frontend/authentication_page/authentication_controller.dart';
-import 'package:frontend/authentication_page/authentication_view_two.dart';
+import 'package:frontend/authentication_page/patient_authentication/authentication_controller.dart';
 import 'package:get/get.dart';
+import 'package:persian_fonts/persian_fonts.dart';
+
 
 
 
@@ -9,7 +10,7 @@ class WavePatternPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final paint = Paint()
-      ..color = Colors.white.withOpacity(0.1)
+      ..color = Colors.blue
       ..style = PaintingStyle.fill;
 
     // Draw wave pattern
@@ -186,8 +187,11 @@ class AuthView extends StatelessWidget {
                     SizedBox(
                       width: double.infinity,
                       child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.white
+                        ),
                         onPressed: controllerA.sendAuth,
-                        child: const Text('Sign up'),
+                        child: Text('ثبت نام', style: PersianFonts.Yekan.copyWith(color: Colors.black87, fontSize: 18),),
                       ),
                     ),
                     const SizedBox(height: 24),

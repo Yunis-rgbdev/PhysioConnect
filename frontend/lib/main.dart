@@ -1,14 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:frontend/authentication_page/authentication_view.dart';
+import 'package:frontend/authentication_page/patient_authentication/authentication_view.dart';
 import 'package:frontend/dashboard_page/dashboard_view.dart';
 import 'package:frontend/home_page/home_view.dart';
 import 'package:frontend/information_page/information_view.dart';
+import 'package:frontend/user_auth_controller.dart';
 import 'package:frontend/welcome_page/welcome_view.dart';
 import 'package:get/get.dart';
-
 import 'login_page/login_view.dart';
 
+
+
+
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  Get.put(AuthController(), permanent: true);
   runApp(const MyApp());
 }
 
